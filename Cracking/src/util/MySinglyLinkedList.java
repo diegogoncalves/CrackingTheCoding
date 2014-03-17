@@ -1,48 +1,55 @@
 package util;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 import junit.framework.Assert;
 
 public class MySinglyLinkedList<T> implements Iterable<T> {
 
-	Node head;
+	Node<T> head;
+	int size;
 
-
-	public MySinglyLinkedList () {}
+	public MySinglyLinkedList () {
+		size=0;
+	}
 
 	public MySinglyLinkedList (T t1) {
-		head=new Node(t1);
+		head=new Node<T>(t1);
+		size=1;
 	}
 
 	/** add element to the list*/
-	void add(T t1){
-		Node aux=head;
-		if(aux==null) head=new Node(t1);
+	public void add(T t1){
+		Node<T> aux=head;
+		if(aux==null) head=new Node<T>(t1);
 		else{
 			while(aux.next!=null){
 				aux=aux.next;
 			}
-			aux.next=new Node(t1);
+			aux.next=new Node<T>(t1);
 		}
+		size++;
 	}
 
 
 
 	/** remove an element of the list and return the head*/
 	void remove(T t1){
-		Node aux=head;
+		Node<T> aux=head;
+		//list is empty
 		if(head==null) return;
 		else{
+			//element is in the head
 			if(head.t==t1){
 				head=head.next;
+				size--;
 			}
 			else{
 				while(aux.next!=null){
 					if(aux.next.t==t1){
 						aux.next=aux.next.next;
+						size--;
 						break;
 					}
 					aux=aux.next;
@@ -52,7 +59,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 	}
 
 	public String toString(){
-		Node aux=head;
+		Node<T> aux=head;
 		StringBuilder s=new StringBuilder();
 		s.append("[");
 		while(aux!=null){
@@ -62,32 +69,31 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 		s.append("]");
 		return s.toString();
 	}
+	
+	public int size(){return size;}
 
 	@Override
 	public Iterator<T> iterator() {
 		return new MyIterator();
 	}
+	
+	public Node<T> getHeadNode(){
+		return head;
+	}
 
-	class Node{
-		Node next;
-		T t;
-		Node(T t1){
-			t=t1;
-		}
-	}	
+	
 
 	class MyIterator implements Iterator<T>{
 
-		Node preLast;
-		Node last;
-		Node current;
+		Node<T> preLast;
+		Node<T> last;
+		Node<T> current;
 		
 		boolean nextCalled;
 		int index;
 
 		MyIterator(){
 			current=head;
-			last=head;
 		}
 
 		@Override
@@ -111,14 +117,22 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 		@Override
 		public void remove() {
 			if(nextCalled){
-				if(current!=null){
-					last.t=current.t;
-					last.next=current.next;
-					current=last;
+				//changing the head
+				if(preLast==null){
+					head=current;
+					last=null;
 				}
 				else{
-					
+					if(current!=null){
+						last.t=current.t;
+						last.next=current.next;
+						current=last;	
+					}
+					else{
+						last=preLast;
+					}
 				}
+				size--;
 				nextCalled=false;
 			}
 			else throw new IllegalStateException();
@@ -148,6 +162,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 		it.next();
 		it.remove();
 		Assert.assertEquals("[]",ll.toString() );
+		System.out.print("vr");
 
 
 
