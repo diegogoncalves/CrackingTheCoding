@@ -7,7 +7,7 @@ public class e3 {
 	static <T> void removeNode(Node<T> n){
 		if(n==null)return;
 		if(n.next!=null){
-			n.t=n.next.t;
+			n.value=n.next.value;
 			n.next=n.next.next;
 		}
 	}

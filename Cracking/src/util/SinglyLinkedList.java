@@ -5,16 +5,16 @@ import java.util.NoSuchElementException;
 
 import junit.framework.Assert;
 
-public class MySinglyLinkedList<T> implements Iterable<T> {
+public class SinglyLinkedList<T> implements Iterable<T> {
 
 	Node<T> head;
 	int size;
 
-	public MySinglyLinkedList () {
+	public SinglyLinkedList () {
 		size=0;
 	}
 
-	public MySinglyLinkedList (T t1) {
+	public SinglyLinkedList (T t1) {
 		head=new Node<T>(t1);
 		size=1;
 	}
@@ -41,13 +41,13 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 		if(head==null) return;
 		else{
 			//element is in the head
-			if(head.t==t1){
+			if(head.value==t1){
 				head=head.next;
 				size--;
 			}
 			else{
 				while(aux.next!=null){
-					if(aux.next.t==t1){
+					if(aux.next.value==t1){
 						aux.next=aux.next.next;
 						size--;
 						break;
@@ -63,7 +63,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 		StringBuilder s=new StringBuilder();
 		s.append("[");
 		while(aux!=null){
-			s.append(" "+aux.t);
+			s.append(" "+aux.value);
 			aux=aux.next;
 		}
 		s.append("]");
@@ -108,7 +108,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 				last=current;
 				current=current.next;
 				nextCalled=true;
-				return last.t;
+				return last.value;
 			}
 			else throw new NoSuchElementException();
 
@@ -124,7 +124,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 				}
 				else{
 					if(current!=null){
-						last.t=current.t;
+						last.value=current.value;
 						last.next=current.next;
 						current=last;	
 					}
@@ -144,7 +144,7 @@ public class MySinglyLinkedList<T> implements Iterable<T> {
 
 
 	public static void main(String[] args) {
-		MySinglyLinkedList<Integer> ll = new MySinglyLinkedList<Integer>();
+		SinglyLinkedList<Integer> ll = new SinglyLinkedList<Integer>();
 		ll.add(1);
 		ll.add(2);
 		ll.add(3);

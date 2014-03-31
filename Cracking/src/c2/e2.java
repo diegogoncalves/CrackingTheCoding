@@ -2,12 +2,12 @@ package c2;
 
 
 
-import util.MySinglyLinkedList;
+import util.SinglyLinkedList;
 import util.Node;
 
 public class e2 {
 
-	static <T>  Object findKthLastElement(MySinglyLinkedList<T> ll,int k){
+	static <T>  Object findKthLastElement(SinglyLinkedList<T> ll,int k){
 		Node<T> n=ll.getHeadNode();
 		Node<T> runner=n;
 		if(k<0)return null;
@@ -23,7 +23,7 @@ public class e2 {
 			runner=runner.next;
 			n=n.next;
 		}
-		return n.t;
+		return n.value;
 	}
 	public static void main(String[] args) {
 		

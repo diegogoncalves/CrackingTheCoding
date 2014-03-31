@@ -2,15 +2,15 @@ package util;
 
 import java.util.ArrayList;
 
-public class MyStringBuffer {
+public class StringBuffer {
 
 	private ArrayList<String> buffer;
 	
-	MyStringBuffer(){
+	StringBuffer(){
 		buffer= new ArrayList<String>();
 	}
 	
-	public MyStringBuffer append(String s){
+	public StringBuffer append(String s){
 		buffer.add(s);
 		return this;
 	}
@@ -31,7 +31,7 @@ public class MyStringBuffer {
 	}
 	
 	public static void main(String[] args) {
-		MyStringBuffer m=new MyStringBuffer();
+		StringBuffer m=new StringBuffer();
 		System.out.print(m.append("oi").append(",tudo bem?").toString());
 
 	}

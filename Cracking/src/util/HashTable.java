@@ -4,7 +4,7 @@ package util;
 import java.util.ArrayList;
 
 
-public class MyHashTable<K,V> {
+public class HashTable<K,V> {
 
 	class Pair{
 		K k;
@@ -17,13 +17,13 @@ public class MyHashTable<K,V> {
 	private int capacity;
 	private ArrayList <ArrayList<Pair>> hashTable; 
 
-	MyHashTable(){
+	HashTable(){
 		hashTable=new ArrayList<ArrayList<Pair>>(50);
 		for(int i=0;i<50;i++) hashTable.add ( new ArrayList<Pair>());
 		capacity=50;
 	}
 
-	MyHashTable(int cap){
+	HashTable(int cap){
 		capacity=cap;
 		hashTable=new ArrayList<ArrayList<Pair>>(capacity);
 		for(int i=0;i<capacity;i++) hashTable.add ( new ArrayList<Pair>());

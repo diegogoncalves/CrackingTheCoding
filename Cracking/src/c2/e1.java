@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import util.MySinglyLinkedList;
+import util.SinglyLinkedList;
 import util.Node;
 
 
@@ -28,7 +28,7 @@ public class e1 {
 	}
 
 	//time complexity  o(n^2)
-	static <T> void removeDuplicates(MySinglyLinkedList<T> ll){
+	static <T> void removeDuplicates(SinglyLinkedList<T> ll){
 		Node<T> n=ll.getHeadNode();
 		Node<T> auxCurrent;
 		Node<T> auxLast;
@@ -37,7 +37,7 @@ public class e1 {
 			auxCurrent=n.next;
 			auxLast=n;
 			while(auxCurrent!=null){
-				if(auxCurrent.t==n.t){
+				if(auxCurrent.value==n.value){
 					auxLast.next=auxCurrent.next;
 				}
 				auxLast=auxCurrent;
@@ -69,7 +69,7 @@ public class e1 {
 		}
 	}
 	public static void main(String[] args) {
-		MySinglyLinkedList<Integer> ll =new MySinglyLinkedList<Integer>();
+		SinglyLinkedList<Integer> ll =new SinglyLinkedList<Integer>();
 		ll.add(1);
 		ll.add(7);
 		ll.add(3);

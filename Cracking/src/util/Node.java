@@ -4,8 +4,9 @@ package util;
 
 public class Node<T>{
 	public Node<T> next;
-	public T t;
+	public T value;
+		
 	Node(T t1){
-		t=t1;
+		value=t1;
 	}
 }	
