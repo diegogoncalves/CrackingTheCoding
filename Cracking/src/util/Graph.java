@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
+
+
 public class Graph<T> {
 
 	HashMap<T,Node> members;
@@ -16,14 +18,14 @@ public class Graph<T> {
 
 		members.put(value,new Node(value));
 	}
-	
+
 	boolean isThereRoute(T begin,T end){
 		Node aux=members.get(begin);
 		if(aux==null)return false;
 		else return aux.isThereRoute(end);
 	}
-	
-	Collection getElements(){
+
+	Collection<Node> getElements(){
 		return members.values();
 	}
 

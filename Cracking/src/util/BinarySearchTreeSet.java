@@ -178,6 +178,7 @@ public class BinarySearchTreeSet<T extends Comparable<T>> {
 
 				oldList=newList;
 				newList=new LinkedList<TreeNode<T>>();
+				
 
 				for(TreeNode<T> aux:oldList){
 					visit(aux.value);
@@ -192,7 +193,42 @@ public class BinarySearchTreeSet<T extends Comparable<T>> {
 		}
 
 	}
-
+	
+	public void preOrder(){
+		preOrder(root);
+	}
+	
+	private void preOrder(TreeNode<T> n){
+		if(n!=null){
+			visit(n.value);
+			preOrder(n.left);
+			preOrder(n.right);
+		}
+	}
+	
+	public void postOrder(){
+		postOrder(root);
+	}
+	
+	private void postOrder(TreeNode<T> n){
+		if(n!=null){
+			postOrder(n.left);
+			postOrder(n.right);
+			visit(n.value);
+		}
+	}
+	
+	public void inOrder(){
+		inOrder(root);
+	}
+	
+	private void inOrder(TreeNode<T> n){
+		if(n!=null){
+			inOrder(n.left);
+			visit(n.value);
+			inOrder(n.right);
+		}
+	}
 	private void visit(T n){
 		System.out.print(n.toString()+" ");
 	}
@@ -215,6 +251,7 @@ public class BinarySearchTreeSet<T extends Comparable<T>> {
 		bt.remove(4);
 		//System.out.println(bt.contains(2));
 		bt.breadthFirstSearch();
+		bt.preOrder();
 	}
 
 

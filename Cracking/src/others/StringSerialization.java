@@ -8,13 +8,16 @@ import java.io.Serializable;
 public class StringSerialization implements Serializable {
 
 
+
+	private static final long serialVersionUID = 1L;
 	transient String  s;
 	String cyphered;
 
 	StringSerialization(String u){
 		s=u;
 	}
-
+	
+	
 	char genChar(int c){
 		if(c<10) c+='0';
 		else c+='A'-10;
@@ -69,6 +72,7 @@ public class StringSerialization implements Serializable {
 		System.out.println(ss.cyphered);
 		ss.decypher();
 		System.out.println(ss.s);
+		
 	}
 
 }
